@@ -5,6 +5,7 @@ metadata:
   labels:
     app: devops-303
     env: development
+    criticity: danger
 spec:
   containers:
     - name: devops-303
@@ -12,6 +13,7 @@ spec:
       imagePullPolicy: Never
       ports:
         - containerPort: 8884
+
       resources:
         limits:
           cpu: 100m

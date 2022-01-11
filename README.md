@@ -32,4 +32,20 @@ kubectl apply -f .\devops-303\devops-303-Ingress-nginx.yml --namespace=devops-30
 kubectl port-forward --namespace=devops-303 devops-303 8080:8884
 
 
+kubectl create serviceaccount client --namespace=devops-303
+kubectl create serviceaccount dev --namespace=devops-303
+
+kubectl apply -f .\devops-303\devops-303-RoleClient.yml --namespace=devops-303
+kubectl apply -f .\devops-303\devops-303-RoleDev.yml --namespace=devops-303
+kubectl apply -f .\devops-303\devops-303-RoleBindingDev.yml --namespace=devops-303
+kubectl apply -f .\devops-303\devops-303-RoleBindingClient.yml --namespace=devops-303
+
+kubectl get  rolebinding --output=yaml
+
+
+kubectl get serviceAccounts/client -o yaml --namespace=devops-303
+kubectl get secret/client-token-wrhsk -o yaml --namespace=devops-303
+
+kubectl get serviceAccounts/dev -o yaml --namespace=devops-303
+kubectl get secret/dev-token-q92fr -o yaml --namespace=devops-303
 ```
