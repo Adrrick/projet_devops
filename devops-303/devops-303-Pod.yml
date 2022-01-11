@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: devops-303
+  labels:
+    app: devops-303
+    env: development
+spec:
+  containers:
+    - name: devops-303
+      image: devops-303
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 8884
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
+
+    - name: redis-db
+      image: redis:alpine
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi

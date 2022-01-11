@@ -18,4 +18,18 @@ kubectl port-forward --namespace=hello-world hello-world 8080:80
 
 http://127.0.0.1:8080/ or http://hello-world.ianis:8080/
 
+
+eval $(minikube -p minikube docker-env)
+
+kubectl create namespace devops-303
+
+kubectl apply -f .\devops-303\devops-303-ResourceQuota.yml --namespace=devops-303
+kubectl apply -f .\devops-303\devops-303-Pod.yml --namespace=devops-303
+kubectl apply -f .\devops-303\devops-303-Service.yml --namespace=devops-303
+kubectl apply -f .\devops-303\devops-303-Deployment.yml --namespace=devops-303
+kubectl apply -f .\devops-303\devops-303-Ingress-nginx.yml --namespace=devops-303
+
+kubectl port-forward --namespace=devops-303 devops-303 8080:8884
+
+
 ```
